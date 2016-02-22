@@ -1,0 +1,32 @@
+<% provide(:title, 'Students List') %>
+<h1>
+	Students List
+</h1>
+<% if @students.empty? %>
+<div>
+	<h3>No Students Record</h3>
+</div>
+<% else %>
+<table>
+	<tr>
+		<th>Student Fullname</th>
+		<th>IC Number</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>Another Phone Number</th>
+		<th>Email Address</th>
+		<th>Date Created</th>
+	</tr>
+	<% @students.each do |student| %>
+	<tr>
+		<td><%= link_to student.student_fullname, student_path(student) %></td>
+		<td><%= student.student_ic_number %></td>
+		<td><%= student.student_home_address %></td>
+		<td><%= student.student_phone_number %></td>
+		<td><%= student.student_another_phone_number %></td>
+		<td><%= student.student_email_address %></td>
+		<td><%= time_ago_in_words student.created_at %> ago</td>
+	</tr>
+	<% end %>
+</table>
+<% end %>

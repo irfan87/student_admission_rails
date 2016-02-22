@@ -1,0 +1,56 @@
+<div>
+	<%= form_for @student do |f| %>
+		<% if @student.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@student.errors.count, 'error') %> prohibited this student from being save: </h2>
+			<ul>
+				<% @student.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<div>
+			<%= f.label :student_fullname, 'Student Name' %>
+			<div>
+				<%= f.text_field :student_fullname, placeholder: 'Student Fullname'%>
+			</div>
+		</div>
+		<div>
+			<%= f.label :student_ic_number, 'IC Number' %>
+			<div>
+				<%= f.number_field :student_ic_number, placeholder: 'IC Number'%>
+			</div>
+		</div>
+		<div>
+			<%= f.label :student_home_address, 'Home Address' %>
+			<div>
+				<%= f.text_area :student_home_address, placeholder: 'Home Address'%>
+			</div>
+		</div>
+		<div>
+			<%= f.label :student_phone_number, 'Phone Number' %>
+			<div>
+				<%= f.text_field :student_phone_number, placeholder: 'Phone Number'%>
+			</div>
+		</div>
+		<div>
+			<%= f.label :student_another_phone_number, 'Another Phone Number (Options)' %>
+			<div>
+				<%= f.text_field :student_another_phone_number, placeholder: 'Another Phone Number'%>
+			</div>
+		</div>
+		<div>
+			<%= f.label :student_email_address, 'Email Address' %>
+			<div>
+				<%= f.email_field :student_email_address, placeholder: 'Email Address'%>
+			</div>
+		</div>
+		<div>
+			<%= f.submit %>
+		</div>
+		<div>
+			<%= link_to 'Main Page', students_path %>
+		</div>
+	<% end %>
+</div>

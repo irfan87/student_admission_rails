@@ -1,0 +1,32 @@
+<% provide(:title, "#{@student.student_fullname}'s information") %>
+<div>
+	<h2>Student Informations</h2>
+	<p>
+		This profile was created since <%= time_ago_in_words(@student.updated_at) %> ago.
+	</p>
+	<div>
+		<p>Fullname: <%= @student.student_fullname %></p>
+		<p>IC Number: <%= @student.student_ic_number %></p>
+		<p>Address: <%= @student.student_home_address %></p>
+		<p>Phone Number: <%= @student.student_phone_number %></p>
+		<% if @student.student_another_phone_number.nil? %>
+		<p>
+			Another Phone Number: -
+		</p>
+		<% else %>
+		<p>Another Phone Number: <%= @student.student_another_phone_number %></p>
+		<% end %> 
+		<p>Email Address: <%= @student.student_email_address %></p>
+		<p>
+			Course Taken: 
+			<% @student.courses.each do |course| %>
+			<ul>
+				<li><%= course.course_name %></li>
+			</ul>
+			<% end %>
+		</p>
+		<%= link_to 'Edit Student', edit_student_path(@student) %>
+		<%= link_to 'Delete Student', student_path(@student), method: :delete, data: {confirm: 'Are you sure want to delete this student?'} %>
+	</div>
+	<%= link_to 'Main Page', students_path %>
+</div>
